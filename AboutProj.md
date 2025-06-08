@@ -71,4 +71,49 @@ Whenever a vehicle or person enters the frame:
 ---
 
 ## 🧱 System Architecture
+   +------------------------+        +-----------------------+
+   | Raspberry Pi + Camera | -----> | HQ Laptop/Command Box |
+   |  - Motion Detection    |        |  - Receives Alerts    |
+   |  - YOLO Inference      |        |  - Displays/Stores    |
+   +------------------------+        +-----------------------+
+
+
+- **Edge device:** Raspberry Pi runs detection.
+- **HQ:** Laptop receives and logs alert images.
+- Straightforward data flow: `Camera → Detection → Alert Image → HQ`
+
+---
+
+## ⚠️ Limitations
+
+- **Low frame rate:** Raspberry Pi handles only ~5–10 FPS.
+- **Poor lighting/occlusion:** Reduces detection reliability.
+- **Hardware limits:** Larger YOLO models may lag.
+- **Suggested Upgrades:**
+  - Use **hardware accelerators** (e.g., Coral TPU, Intel NCS).
+  - Try **smaller YOLO variants** like YOLO-Nano or YOLOv5s.
+
+---
+
+## ✅ Conclusion
+
+This project proves that:
+- **Real-time detection** is possible with low-cost edge devices.
+- **Accurate object detection** can run on both laptops and Raspberry Pi.
+- The system works well in low-traffic, sensitive areas like **military bases**.
+
+Future improvements could include:
+- Faster hardware for better frame rates.
+- Encrypted alert transmission.
+- Cloud logging or dashboard visualization.
+
+---
+
+## 📚 References
+
+1. How to Run YOLO Detection Models on the Raspberry Pi – EJ Technology Consultants  
+2. Ultralytics YOLO Documentation  
+3. *Perimeter Intrusion Detection by Video Surveillance: A Survey*, MDPI
+
+---
 
